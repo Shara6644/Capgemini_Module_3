@@ -1,4 +1,4 @@
-package com.cg.oecms.entity;
+package com.cg.oepms.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,12 +101,6 @@ public class Product {
 
 	public void setProductInfo(String productInfo) {
 		this.productInfo = productInfo;
-	}
-
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", productInfo=" + productInfo
-				+ ", price=" + price + ", category=" + category + ", retailer=" + retailer + ", cart=" + cart + "]";
 	}
 
 //	public List<Review> getReview() {

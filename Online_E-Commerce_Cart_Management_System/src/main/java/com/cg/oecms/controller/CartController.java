@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.cg.oecms.entity.Cart;
 import com.cg.oecms.entity.Product;
+import com.cg.oecms.entity.ProductList;
 import com.cg.oecms.exception.CartException;
 import com.cg.oecms.exception.ProductException;
 import com.cg.oecms.service.CartService;
@@ -26,6 +28,19 @@ public class CartController {
 	
 	@Autowired
 	CartService cartService;
+	@Autowired
+	RestTemplate restTemplate ;
+
+	@GetMapping("/getallproducts")
+	public ResponseEntity<List<Product>> getAllProductList()
+	{
+		ResponseEntity<ProductList> productList = restTemplate.getForEntity("http://product-service/product",ProductList.class);
+	List<Product> list = productList.getBody().getList();
+	
+	ResponseEntity<List<Product>>  re= new ResponseEntity<>(list,HttpStatus.OK);
+	return re;
+	}
+
 	
 	@GetMapping("product")
 	public ResponseEntity<List<Product>> findAllProducts() throws CartException {

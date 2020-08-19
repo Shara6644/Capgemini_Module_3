@@ -1,4 +1,4 @@
-package com.cg.oecms.entity;
+package com.cg.oepms.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +44,6 @@ public class Retailer {
 
 	public String getRetailerName() {
 		return retailerName;
-	}
-
-	@Override
-	public String toString() {
-		return "Retailer [retailerId=" + retailerId + ", retailerName=" + retailerName + ", retailerLocation="
-				+ retailerLocation + ", Product=" + Product + "]";
 	}
 
 	public void setRetailerName(String retailerName) {

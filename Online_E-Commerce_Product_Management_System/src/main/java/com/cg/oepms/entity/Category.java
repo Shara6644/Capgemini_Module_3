@@ -1,4 +1,4 @@
-package com.cg.oecms.entity;
+package com.cg.oepms.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,11 +46,6 @@ public class Category {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
-	}
-
-	@Override
-	public String toString() {
-		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", Product=" + Product + "]";
 	}
 
 //	public List<Product> getProduct() {
