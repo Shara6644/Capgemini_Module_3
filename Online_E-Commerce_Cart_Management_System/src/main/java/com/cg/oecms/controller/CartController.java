@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.cg.oecms.entity.Cart;
+import com.cg.oecms.entity.Login;
 import com.cg.oecms.entity.Product;
 import com.cg.oecms.entity.ProductList;
 import com.cg.oecms.exception.CartException;
@@ -30,6 +31,21 @@ public class CartController {
 	CartService cartService;
 	@Autowired
 	RestTemplate restTemplate ;
+	
+	@GetMapping("cart/login/{user}/{pass}")
+	public ResponseEntity<Login> login(@PathVariable("user") String user,@PathVariable("pass") String pass)
+	{
+		ResponseEntity<Login> re =restTemplate.getForEntity("http://login-service/login/validate/"+user+"/"+pass, Login.class);
+		return re ;
+	}
+	
+	@PostMapping("cart/signup")
+	public ResponseEntity<Login> signUp(@RequestBody Login login)
+	{
+		ResponseEntity<Login> re =restTemplate.postForEntity("http://login-service/login", login, Login.class);
+				//getForEntity("http://login-service/login", Login.class);
+		return re ;
+	}
 
 	@GetMapping("/getallproducts")
 	public ResponseEntity<List<Product>> getAllProductList()
@@ -42,14 +58,6 @@ public class CartController {
 	}
 
 	
-	@GetMapping("product")
-	public ResponseEntity<List<Product>> findAllProducts() throws CartException {
-
-		List<Product> listOfAllProducts = cartService.viewAllProducts();
-		ResponseEntity<List<Product>> responseEntity = new ResponseEntity<List<Product>>(listOfAllProducts, HttpStatus.OK);
-		return responseEntity;
-
-	}
 	
 	@GetMapping("cart")
 	public ResponseEntity<List<Cart>> findAllCarts() throws CartException {

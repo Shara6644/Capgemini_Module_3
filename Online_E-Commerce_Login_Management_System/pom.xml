@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cg</groupId>
-	<artifactId>Online_E-Commerce_Cart_Management_System</artifactId>
+	<artifactId>Online_E-Commerce_Login_Management_System</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Online_E-Commerce_Cart_Management_System</name>
+	<name>Online_E-Commerce_Login_Management_System</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

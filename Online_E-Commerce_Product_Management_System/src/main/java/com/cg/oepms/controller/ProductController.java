@@ -35,11 +35,11 @@ public class ProductController {
 	@GetMapping("product")
 	 public ResponseEntity<ProductList> getMovieInfo()  throws ProductException {
 		ResponseEntity<ProductList> re;
-	     List<Product> info = productService.listAllProducts();
+	     List<Product> listOfProducts = productService.listAllProducts();
 	ProductList   pl = new ProductList();
-		pl.setList(info);
+		pl.setList(listOfProducts);
 		
-		if(info!=null) {
+		if(listOfProducts!=null) {
 			
 			re=new ResponseEntity<>(pl,HttpStatus.OK);
 		}
