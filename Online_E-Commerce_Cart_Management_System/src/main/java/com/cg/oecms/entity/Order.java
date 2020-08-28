@@ -1,8 +1,8 @@
 package com.cg.oecms.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,11 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="order_tbl")
 public class Order {
@@ -38,9 +37,7 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name="cart_id")
 	private Cart  cart;
-//	@OneToMany(mappedBy="order")
-//	@JsonIgnore
-//	private List<Cart>  Cart=new ArrayList<Cart>();
+
 
 	public int getOrderId() {
 		return orderId;
@@ -74,15 +71,7 @@ public class Order {
 		this.contact = contact;
 	}
 
-//	public List<Cart> getCart() {
-//		return Cart;
-//	}
-//
-//	public void setCart(List<Cart> cart) {
-//		Cart = cart;
-//	}
-//	
-//	
+
 	
 
 }

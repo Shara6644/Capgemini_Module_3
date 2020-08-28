@@ -17,6 +17,15 @@ public class Login {
 	private long phoneNumber;
 	@Column(name="email_id" ,length=40)
 	private String emailId;
+	@Column (name="role")
+	private String role;
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getUserName() {
 		return userName;
 	}

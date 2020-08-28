@@ -24,10 +24,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 			 String uri= req.getRequestURI();
 			 
 			 ErrorInfo  obj = new ErrorInfo(LocalDateTime.now(),message,uri);
-			 ResponseEntity<ErrorInfo>  re = new ResponseEntity<ErrorInfo>(obj,HttpStatus.NOT_FOUND);
-			 return re;
+			 
+			 return new ResponseEntity<>(obj,HttpStatus.NOT_FOUND);
 		}
 
+		
 
 		@ExceptionHandler(ProductException.class)
 		public @ResponseBody ResponseEntity<ErrorInfo>  handleException(ProductException ex,HttpServletRequest req)
@@ -37,8 +38,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 			 String uri= req.getRequestURI();
 			 
 			 ErrorInfo  obj = new ErrorInfo(LocalDateTime.now(),message,uri);
-			 ResponseEntity<ErrorInfo>  re = new ResponseEntity<ErrorInfo>(obj,HttpStatus.NOT_FOUND);
-			 return re;
+			 
+			 return new ResponseEntity<>(obj,HttpStatus.NOT_FOUND);
 		}
 		@ExceptionHandler(LoginException.class)
 		public @ResponseBody ResponseEntity<ErrorInfo>  handleException(LoginException ex,HttpServletRequest req)
@@ -48,8 +49,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 			 String uri= req.getRequestURI();
 			 
 			 ErrorInfo  obj = new ErrorInfo(LocalDateTime.now(),message,uri);
-			 ResponseEntity<ErrorInfo>  re = new ResponseEntity<ErrorInfo>(obj,HttpStatus.NOT_FOUND);
-			 return re;
+			
+			 return new ResponseEntity<>(obj,HttpStatus.NOT_FOUND);
 		}
 		@ExceptionHandler(Exception.class)
 		public @ResponseBody ResponseEntity<ErrorInfo>  handleException(Exception ex,HttpServletRequest req)
@@ -59,8 +60,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 			 String uri= req.getRequestURI();
 			 
 			 ErrorInfo  obj = new ErrorInfo(LocalDateTime.now(),message,uri);
-			 ResponseEntity<ErrorInfo>  re = new ResponseEntity<ErrorInfo>(obj,HttpStatus.NOT_FOUND);
-			 return re;
+			
+			 return new ResponseEntity<>(obj,HttpStatus.NOT_FOUND);
 		}
 		
 }

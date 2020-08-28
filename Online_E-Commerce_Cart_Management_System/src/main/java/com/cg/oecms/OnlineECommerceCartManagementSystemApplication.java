@@ -12,6 +12,7 @@ public class OnlineECommerceCartManagementSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineECommerceCartManagementSystemApplication.class, args);
+		
 	}
 	@Bean
 	@LoadBalanced

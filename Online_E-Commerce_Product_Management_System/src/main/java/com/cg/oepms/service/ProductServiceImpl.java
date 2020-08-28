@@ -74,4 +74,11 @@ public class ProductServiceImpl implements ProductService{
 		
 		return productDao.listOfProducts(low, high);
 	}
+
+	@Override
+	public List<Product> searchProductByName(String productName) {
+		
+		return productDao.searchProductByName(productName);
+	}
+	
 }

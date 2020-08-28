@@ -16,6 +16,6 @@ public interface ProductService {
 	public Product deleteProductById(int productId) throws ProductException;
 	
 	public List<Product> listAllProducts()throws ProductException;
-	
+	public List<Product> searchProductByName (String productName);
 	public List<Product> listOfProducts(double low, double high);
 }

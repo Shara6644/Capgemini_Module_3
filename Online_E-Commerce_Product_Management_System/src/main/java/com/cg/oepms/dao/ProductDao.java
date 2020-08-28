@@ -21,5 +21,7 @@ public Product findProductById(int productId) throws ProductException;
 	public List<Product> listAllProducts()throws ProductException;
 	 
 	public List<Product> listOfProducts(double low ,double high);
+	
+	public List<Product> searchProductByName (String productName);
 
 }

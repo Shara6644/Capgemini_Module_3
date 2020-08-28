@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -37,6 +37,26 @@ public class Product {
 	@Column(name="product_price")
 	private double price;
 	
+	
+	
+	
+
+	public Product(int productId, String productName, String productInfo, double price, Category category,
+			Retailer retailer) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productInfo = productInfo;
+		this.price = price;
+		this.category = category;
+		this.retailer = retailer;
+	}
+
+	public Product() {
+		super();
+	}
+
+
 	@ManyToOne
 	@JoinColumn(name="category_id")
 	private Category  category;
@@ -45,16 +65,10 @@ public class Product {
 	@JoinColumn(name="retailer_id")
 	private Retailer  retailer;
 	
-//	@OneToMany(mappedBy="product")
-//	@JsonIgnore
-//	private List<Review>  Review=new ArrayList<Review>();
-//	
-	//@OneToMany(mappedBy="product")
-	//@JsonIgnore
-	//private List<Wishlist>  wishlist=new ArrayList<Wishlist>();	
+
     @OneToMany(mappedBy="product",cascade=CascadeType.REMOVE)
 	@JsonIgnore
-	private List<Cart>  cart=new ArrayList<Cart>();
+	private List<Cart>  cart=new ArrayList<>();
 
 	public int getProductId() {
 		return productId;
@@ -109,27 +123,6 @@ public class Product {
 				+ ", price=" + price + ", category=" + category + ", retailer=" + retailer + ", cart=" + cart + "]";
 	}
 
-//	public List<Review> getReview() {
-//		return Review;
-//	}
-//
-//	public void setReview(List<Review> review) {
-//		Review = review;
-//	}
-//
-//	public List<Wishlist> getWishlist() {
-//		return wishlist;
-//	}
-//
-//	public void setWishlist(List<Wishlist> wishlist) {
-//		this.wishlist = wishlist;
-//	}
-//	
-//	
-//	
-	
-	
-	
-	
+
 
 }

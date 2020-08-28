@@ -5,7 +5,7 @@ import java.util.List;
 import com.cg.oecms.entity.Cart;
 import com.cg.oecms.entity.Product;
 import com.cg.oecms.exception.CartException;
-import com.cg.oecms.exception.ProductException;
+
 
 public interface CartDao {
 	 public List <Product> viewAllProducts() throws CartException;

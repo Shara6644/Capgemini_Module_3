@@ -9,7 +9,7 @@ import com.cg.oecms.dao.CartDao;
 import com.cg.oecms.entity.Cart;
 import com.cg.oecms.entity.Product;
 import com.cg.oecms.exception.CartException;
-import com.cg.oecms.exception.ProductException;
+
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -34,17 +34,17 @@ public class CartServiceImpl implements CartService {
 	Product product =cartDao.findProductById(cart.getProduct().getProductId());
 	if(product==null)
 	{
-		throw new CartException("Product Does not Exist");
+		throw new CartException("Product Does not Exist"); 
 	}
-		double amt =cart.getQuantity()*cart.getProduct().getPrice();
-		cart.setProduct(product);
-		cart.setTotalPrice(amt);
+	
           
 		return cartDao.addProductToCart(cart);
 	}
 
 	@Override
 	public Cart findCartByCartId(int cartId) throws CartException {
+		
+       
 		
 		return cartDao.findCartByCartId(cartId);
 	}
@@ -67,9 +67,8 @@ public class CartServiceImpl implements CartService {
 		if( cartDao.findCartByCartId(cart.getCartId())!=null)
 		 {
 			Product product =cartDao.findProductById(cart.getProduct().getProductId());
-			double amt =cart.getQuantity()*product.getPrice();
 			cart.setProduct(product);
-			cart.setTotalPrice(amt);
+			
        cartDao.updateCart(cart); 
 		 }
 		 else

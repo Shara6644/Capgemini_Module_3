@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cg.oecms.entity.Cart;
 import com.cg.oecms.entity.Product;
 import com.cg.oecms.exception.CartException;
-import com.cg.oecms.exception.ProductException;
+
 @Repository
 @Transactional
 public class CartDaoImpl implements CartDao{
@@ -23,15 +23,19 @@ public class CartDaoImpl implements CartDao{
 	public List<Cart> viewAllCarts() throws CartException {
 		String qry ="select c from Cart c";
 		TypedQuery<Cart> query = entityManager.createQuery(qry, Cart.class);
-		List<Cart> list = query.getResultList();
+		
 	
 		
 		
 		
-		return list;
+		return query.getResultList();
 	}
 	@Override
 	public Cart addProductToCart(Cart cart) throws CartException {
+		
+		double amt =cart.getQuantity()*cart.getProduct().getPrice();
+		
+		cart.setTotalPrice(amt);
 		
 		entityManager.persist(cart);
 		
@@ -60,7 +64,9 @@ public class CartDaoImpl implements CartDao{
 	@Override
 	public Cart updateCart(Cart cart) throws CartException {
 	   
+    double amt =cart.getQuantity()*cart.getProduct().getPrice();
 		
+		cart.setTotalPrice(amt);
 				 cart =entityManager.merge(cart);
 		
 		return cart;
@@ -69,18 +75,18 @@ public class CartDaoImpl implements CartDao{
 	public List<Product> viewAllProducts() throws CartException {
 		String qry ="select p from Product p";
 		TypedQuery<Product> query = entityManager.createQuery(qry, Product.class);
-		List<Product> listOfAllProducts = query.getResultList();
+		 query.getResultList();
 	
 		
 		
 		
-		return listOfAllProducts;
+		return  query.getResultList();
 		
 	}
 	@Override
 	public Product findProductById(int productId)throws CartException {
-		Product product =entityManager.find(Product.class, productId);
-		return product;
+		
+		return entityManager.find(Product.class, productId);
 	}
 	
 	

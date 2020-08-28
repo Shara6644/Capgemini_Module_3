@@ -1,9 +1,6 @@
 package com.cg.oecms.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 @Entity
@@ -32,6 +29,20 @@ public class Cart {
 	
 	
 	
+	public Cart(int cartId, int quantity, double totalPrice, Product product) {
+		super();
+		this.cartId = cartId;
+		this.quantity = quantity;
+		this.totalPrice = totalPrice;
+		this.product = product;
+	}
+	
+
+	public Cart() {
+		super();
+	}
+
+
 	@ManyToOne 
 	@JoinColumn(name="product_id")
 	private Product product;

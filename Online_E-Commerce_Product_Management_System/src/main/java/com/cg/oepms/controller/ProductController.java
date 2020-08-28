@@ -33,9 +33,27 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	@GetMapping("product")
-	 public ResponseEntity<ProductList> getMovieInfo()  throws ProductException {
+	 public ResponseEntity<ProductList> getProductList()  throws ProductException {
 		ResponseEntity<ProductList> re;
 	     List<Product> listOfProducts = productService.listAllProducts();
+	ProductList   pl = new ProductList();
+		pl.setList(listOfProducts);
+		
+		if(listOfProducts!=null) {
+			
+			re=new ResponseEntity<>(pl,HttpStatus.OK);
+		}
+		else {
+			
+			re=new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+		}
+		
+		 return re;
+	 }	
+	@GetMapping("product/name/{pname}")
+	 public ResponseEntity<ProductList> searchProduct(@PathVariable("pname") String productName)  throws ProductException {
+		ResponseEntity<ProductList> re;
+	     List<Product> listOfProducts = productService.searchProductByName(productName);
 	ProductList   pl = new ProductList();
 		pl.setList(listOfProducts);
 		
@@ -61,12 +79,8 @@ public class ProductController {
     	
     	return re;
     }
-//    @ExceptionHandler(ProductException.class)
-//    public ErrorInfo exeptionHandler(ProductException e ,HttpServletRequest request)
-//    {
-//    	ErrorInfo errorInfo = new ErrorInfo(LocalDateTime.now(),e.getMessage(),request.getRequestURI());
-//    	return errorInfo;
-//    }
+   
+
 
     @PostMapping("product")
     public ResponseEntity<Product> addproduct(@RequestBody Product product) throws ProductException

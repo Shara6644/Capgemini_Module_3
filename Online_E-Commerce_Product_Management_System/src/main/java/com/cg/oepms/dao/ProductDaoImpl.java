@@ -61,8 +61,19 @@ public class ProductDaoImpl implements ProductDao {
 		TypedQuery<Product> query = em.createQuery(qry,Product.class );
 		query.setParameter("low", low).setParameter("high", high);
 
-		List<Product> list = query.getResultList();
-		return list;
+		
+		return  query.getResultList();
+	}
+
+	@Override
+	public List<Product> searchProductByName(@Param("name") String productName) {
+		
+		String qry = "select p from Product p where p.productName= :name";
+		TypedQuery<Product> query = em.createQuery(qry,Product.class );
+		query.setParameter("name", productName);
+
+		
+		return query.getResultList();
 	}
 	
 

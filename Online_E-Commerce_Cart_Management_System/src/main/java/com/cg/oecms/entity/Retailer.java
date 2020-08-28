@@ -30,9 +30,23 @@ public class Retailer {
 	@Column(name="retailer_location")
 	private String retailerLocation;
 	
+	
+	public Retailer(int retailerId, String retailerName, String retailerLocation) {
+		super();
+		this.retailerId = retailerId;
+		this.retailerName = retailerName;
+		this.retailerLocation = retailerLocation;
+	}
+	
+
+	public Retailer() {
+		super();
+	}
+
+
 	@OneToMany(mappedBy="retailer")
 	@JsonIgnore
-	private List<Product>  Product=new ArrayList<Product>();
+	private List<Product>  product=new ArrayList<>();
 
 	public int getRetailerId() {
 		return retailerId;
@@ -49,7 +63,7 @@ public class Retailer {
 	@Override
 	public String toString() {
 		return "Retailer [retailerId=" + retailerId + ", retailerName=" + retailerName + ", retailerLocation="
-				+ retailerLocation + ", Product=" + Product + "]";
+				+ retailerLocation + ", Product=" + product + "]";
 	}
 
 	public void setRetailerName(String retailerName) {
@@ -64,14 +78,6 @@ public class Retailer {
 		this.retailerLocation = retailerLocation;
 	}
 
-//	public List<Product> getProduct() {
-//		return Product;
-//	}
-//
-//	public void setProduct(List<Product> product) {
-//		Product = product;
-//	}
-//
 
 }
 

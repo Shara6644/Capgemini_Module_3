@@ -28,9 +28,28 @@ public class Category {
 	@Column(name="category_name",length=15)
 	private String categoryName;
 	
+	
+	
+	
+public Category(int categoryId, String categoryName) {
+		super();
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+	}
+    
+
+public Category() {
+	super();
+}
+
+
 @OneToMany(mappedBy="category")
 @JsonIgnore
-	private List<Product>  Product=new ArrayList<Product>();
+	private List<Product>  product=new ArrayList<>();
+ 
+
+	
+
 
 	public int getCategoryId() {
 		return categoryId;
@@ -50,19 +69,10 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", Product=" + Product + "]";
+		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", Product=" + product + "]";
 	}
 
-//	public List<Product> getProduct() {
-//		return Product;
-//	}
-//
-//	public void setProduct(List<Product> product) {
-//		Product = product;
-//	}
-//	
-	
-	
+
 	
 	
 	
